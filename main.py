@@ -4,6 +4,8 @@ os.chdir(r'C:\Users\karthikeya\OneDrive\Desktop')
 
 # print(os.listdir())
 
-os.makedirs(r'C:\Users\karthikeya\OneDrive\Desktop\Helllo\byee')
+# os.makedirs(r'C:\Users\karthikeya\OneDrive\Desktop\Helllo\byee')
+
+os.removedirs(r'Helllo\byee')
 
 

@@ -1,4 +1,9 @@
 import os
 
-x = os.cpu_count()
-print(x)
+os.chdir(r'C:\Users\karthikeya\OneDrive\Desktop')
+
+# print(os.listdir())
+
+os.makedirs(r'C:\Users\karthikeya\OneDrive\Desktop\Helllo\byee')
+
+

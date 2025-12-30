@@ -1,14 +1,18 @@
 from pathlib import Path
 import time
 import threading
+import os
 
 def search_func(folder, x):
-    for item in folder.rglob("*"):
-        try:
-            if x.lower() in item.name.lower():
-                print(item)
-        except PermissionError:
-            pass
+    x_lower = x.lower()
+    try:
+        for item in os.scandir(folder):  
+            if x_lower in item.name.lower():
+                print(Path(item.path))  
+            elif item.is_dir(follow_symlinks=False):
+                search_func(item.path, x)
+    except PermissionError:
+        pass
 
 
 

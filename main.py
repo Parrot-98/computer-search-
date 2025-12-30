@@ -2,6 +2,7 @@ from pathlib import Path
 import time
 import threading
 import os
+from concurrent.futures import ThreadPoolExecutor
 
 def search_func(folder, x):
     x_lower = x.lower()
@@ -28,13 +29,10 @@ threads = []
 
 start = time.perf_counter()
 
-for folder in folders:
-    t = threading.Thread(target=search_func, args=(folder, x))
-    threads.append(t)
-    t.start()
+with ThreadPoolExecutor(max_workers=8) as executor:
 
-for t in threads:
-    t.join()
+    for folder in folders:
+        executor.submit(search_func, folder, x)
 
 end = time.perf_counter()
 

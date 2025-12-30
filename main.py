@@ -2,7 +2,7 @@ from pathlib import Path
 import time
 import threading
 
-def search_func(folders, x):
+def search_func(folder, x):
     for item in folder.rglob("*"):
         try:
             if x.lower() in item.name.lower():

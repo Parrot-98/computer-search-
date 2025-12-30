@@ -1,11 +1,19 @@
-import os
+from pathlib import Path
 
-os.chdir(r'C:\Users\karthikeya\OneDrive\Desktop')
+folders = [
+    Path.home(),                     
+    Path("C:/Program Files"),
+    Path("C:/Program Files (x86)")
+]
 
-# print(os.listdir())
+x = input("Enter what you want to find: ")
 
-# os.makedirs(r'C:\Users\karthikeya\OneDrive\Desktop\Helllo\byee')
-
-os.removedirs(r'Helllo\byee')
+for folder in folders:
+    for i in folder.rglob("*"):
+        try:
+            if x.lower() in i.name.lower():
+                print(i)
+        except PermissionError:
+            pass
 
 
